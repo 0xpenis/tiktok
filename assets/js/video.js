@@ -6,7 +6,7 @@ let videoRoot = document.getElementById("appVideos")
 const parser = new DOMParser();
 
 
-fetch('https://www.reddit.com/r/indianfetish.json')
+fetch('https://www.reddit.com/r/hoottgirls.json')
   .then(function(res) {
     return res.json();   // Convert the data into JSON
   })
@@ -19,7 +19,7 @@ fetch('https://www.reddit.com/r/indianfetish.json')
   });
 const appendPosts = (data) => {
      data.filter(elem=>elem.data.domain==="redgifs.com").map((elem, idx)=>{
-         console.log(elem.data.secure_media.oembed.thumbnail_url)
+         console.log(elem)
         let urlArray = elem.data.secure_media.oembed.thumbnail_url
         let htmlString = `
         <div class="video">
