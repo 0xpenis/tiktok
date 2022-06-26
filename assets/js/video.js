@@ -4,10 +4,9 @@ let prev
 let isApple = false
 let videoRoot = document.getElementById("appVideos")
 const parser = new DOMParser();
-var player = dashjs.MediaPlayer().create();
 
 
-fetch('https://www.reddit.com/r/hoottgirls.json')
+fetch('https://www.reddit.com/r/indianfetish.json')
   .then(function(res) {
     return res.json();   // Convert the data into JSON
   })
@@ -18,14 +17,13 @@ fetch('https://www.reddit.com/r/hoottgirls.json')
   .catch(function(err) {
     console.log(err);   // Log error if any
   });
-
 const appendPosts = (data) => {
      data.filter(elem=>elem.data.domain==="redgifs.com").map((elem, idx)=>{
          console.log(elem.data.secure_media.oembed.thumbnail_url)
-        let urlArray = elem.data.secure_media.oembed.thumbnail_url.slice(0,-11)
+        let urlArray = elem.data.secure_media.oembed.thumbnail_url
         let htmlString = `
         <div class="video">
-        <video id="video-${idx}" class="video_player" src="${urlArray}.mp4" autoplay loop>
+        <video id="video-${idx}" class="video_player" src="${urlArray.slice(0,-4)}.mp4" alt="${urlArray}" autoplay muted playsinline loop>
         </video>
         <div class="videoFooter">
             <div class="videoFooterTicker">
